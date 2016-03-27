@@ -1,0 +1,32 @@
+﻿#map {
+    height: 100%;
+    width: 100%;
+}
+
+.bubble-down {
+    width: 0;
+    height: 0;
+    border-bottom: 0 solid transparent;
+    border-left: 0 solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #fff;
+    position: absolute;
+    left: 50%;
+    margin-left: 1px;
+    bottom: -8px;
+}
+
+.infobox-container {
+    background: #FFF;
+    color: #474E57;
+    border-radius: 50%;
+    padding: 2px 2px 2px 2px;
+}
+
+.infobox-img {
+    height: 50px;
+    width: 50px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
