@@ -4,8 +4,8 @@
 });
 
 function initMap() {
-   var mapDiv = document.getElementById('map');
-   var map = new google.maps.Map(mapDiv, {
+    var mapDiv = document.getElementById('map');
+    var map = new google.maps.Map(mapDiv, {
         center: { lat: 21.767, lng: -78.871 },
         zoom: 8,
         streetViewControl: false,
@@ -24,12 +24,12 @@ function initMap() {
         type: 'POST',
         url: '/Map/Markers',
         success: function (Data) {
-            onMarkersReceived(Data,map);
+            onMarkersReceived(Data, map);
         }
     });
 }
 
-function onMarkersReceived(markers,map) {
+function onMarkersReceived(markers, map) {
     var markersArray = [];
     var markerBounds = new google.maps.LatLngBounds();
     $.each(markers, function (index, value) {
@@ -39,12 +39,13 @@ function onMarkersReceived(markers,map) {
         markersArray.push(marker);
 
         var boxdiv = document.createElement("div");
-        boxdiv.className = "infobox-container"
+        boxdiv.className = "infobox-container";
         var image = document.createElement("img");
-        image.src = $.getUrl('Images/' + value.Image + '.gif')
+        image.src = $.getUrl('Images/loading.gif');
         image.className = "infobox-img";
+        image.dataset.src = $.getUrl('Images/' + value.Image + '.gif');
 
-        boxdiv.appendChild(image)
+        boxdiv.appendChild(image);
 
         var bubbledown = document.createElement("div");
         bubbledown.className = "bubble-down";
@@ -70,8 +71,13 @@ function onMarkersReceived(markers,map) {
         google.maps.event.addListener(marker, 'map_changed', function () {
             if (this.getMap()) {
                 ib.open(this.getMap(), this);
+                $.loadImage(image.dataset.src)
+                .done(function (img) {
+                    image.src = img.src;
+                });
             } else {
-                ib.close()
+                ib.close();
+                image.src = $.getUrl('Images/loading.gif');
             }
         });
     });
@@ -81,13 +87,41 @@ function onMarkersReceived(markers,map) {
     hideLoading();
 }
 
+$.loadImage = function (url) {
+    var loadImage = function (deferred) {
+        var image = new Image();
+
+        image.onload = loaded;
+        image.onerror = errored; 
+        image.onabort = errored;
+
+        image.src = url;
+
+        function loaded() {
+            unbindEvents();
+            deferred.resolve(image);
+        }
+        function errored() {
+            unbindEvents();
+            deferred.reject(image);
+        }
+        function unbindEvents() {
+            image.onload = null;
+            image.onerror = null;
+            image.onabort = null;
+        }
+    };
+
+    return $.Deferred(loadImage).promise();
+};
+
 function showloading() {
     var loadingDiv = document.createElement("div");
     loadingDiv.id = "overlay";
 
     var image = document.createElement("img");
     image.id = "loading";
-    image.src = $.getUrl('Images/loading.gif')
+    image.src = $.getUrl('Images/loading.gif');
     loadingDiv.appendChild(image);
 
     $(loadingDiv).appendTo('body');
