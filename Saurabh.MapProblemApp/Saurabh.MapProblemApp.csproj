@@ -198,7 +198,6 @@
     <Content Include="scripts\infobox.js" />
     <Content Include="scripts\jquery-2.2.1.js" />
     <Content Include="scripts\jquery-2.2.1.min.js" />
-    <Content Include="scripts\Map.js" />
     <Content Include="scripts\mapCluster.js" />
     <Content Include="scripts\markerclusterer.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />

@@ -230,7 +230,11 @@
                         contentType: 'application/json; charset=utf-8',
                         dataType: 'json',
                         success: function (data) {
-                            image.src = $.getUrl('Images/' + data.Image + '.gif');
+
+                            $.loadImage($.getUrl('Images/' + data.Image + '.gif'))
+                                .done(function (img) {
+                                 image.src = img.src;
+                            });
                         }
                     });
                 }
@@ -391,3 +395,31 @@
     };
     google.maps.event.addDomListener(window, 'load', gmc.mymap.initialize); // load map
 })(jQuery);
+
+$.loadImage = function (url) {
+    var loadImage = function (deferred) {
+        var image = new Image();
+
+        image.onload = loaded;
+        image.onerror = errored;
+        image.onabort = errored;
+
+        image.src = url;
+
+        function loaded() {
+            unbindEvents();
+            deferred.resolve(image);
+        }
+        function errored() {
+            unbindEvents();
+            deferred.reject(image);
+        }
+        function unbindEvents() {
+            image.onload = null;
+            image.onerror = null;
+            image.onabort = null;
+        }
+    };
+
+    return $.Deferred(loadImage).promise();
+};

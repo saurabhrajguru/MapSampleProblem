@@ -23,7 +23,7 @@ namespace Saurabh.MapProblemApp.App_Start
                      "~/scripts/infobox.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/map").Include(
-                     "~/scripts/Map.js"));
+                     "~/scripts/mapCluster.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                      "~/Content/bootstrap.css",
