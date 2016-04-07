@@ -30,3 +30,69 @@
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
+
+.gmc_clustersize1, .gmc_clustersize2, .gmc_clustersize3, .gmc_clustersize4, .gmc_clustersize5 {
+    font-family: arial;
+    display: block;
+    position: relative;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    color: #fff;
+}
+
+
+.gmc_clustersize1 {
+    left: -26px;
+    top: -26px;
+    line-height: 52px;
+    font-size: 12px;
+    background: url(../Images/clusters/m1.png) no-repeat 0 0;
+    width: 53px;
+    height: 52px;
+}
+
+.gmc_clustersize2 {
+    left: -28px;
+    top: -28px;
+    line-height: 55px;
+    font-size: 12px;
+    background: url(../Images/clusters/m2.png) no-repeat 0 0;
+    width: 56px;
+    height: 55px;
+}
+
+.gmc_clustersize3 {
+    left: -33px;
+    top: -33px;
+    line-height: 65px;
+    font-size: 12px;
+    background: url(../Images/clusters/m3.png) no-repeat 0 0;
+    width: 66px;
+    height: 65px;
+}
+
+.gmc_clustersize4 {
+    left: -39px;
+    top: -39px;
+    text-align: center;
+    line-height: 77px;
+    font-size: 12px;
+    background: url(../Images/clusters/m4.png) no-repeat 0 0;
+    width: 78px;
+    height: 77px;
+}
+
+.gmc_clustersize5 {
+    left: -45px;
+    top: -45px;
+    line-height: 89px;
+    font-size: 12px;
+    background: url(../Images/clusters/m5.png) no-repeat 0 0;
+    width: 90px;
+    height: 89px;
+}
+
+#gmc-Clustering-span {
+    display: none;
+}

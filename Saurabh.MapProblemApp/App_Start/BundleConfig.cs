@@ -20,7 +20,6 @@ namespace Saurabh.MapProblemApp.App_Start
                      "~/Scripts/bootstrap.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/gmaps-libs").Include(
-                     "~/scripts/markerclusterer.js",
                      "~/scripts/infobox.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/map").Include(

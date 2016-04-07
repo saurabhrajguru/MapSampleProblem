@@ -38,6 +38,7 @@ namespace Saurabh.MapProblemApp.App_Start
 
             // TODO: Register your types here
             container.RegisterType<IMapHelper, MapHelper>();
+            container.RegisterType<IClusteredMarkerHelper, ClusteredMarkerHelper>(); ;
         }
     }
 }

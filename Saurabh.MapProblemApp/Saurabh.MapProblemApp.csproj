@@ -52,6 +52,10 @@
       <HintPath>..\packages\CsvHelper.2.13.5.0\lib\net40-client\CsvHelper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="GoogleMaps.Net.Clustering, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GoogleMaps.Net.Clustering.0.8.5-alpha\lib\GoogleMaps.Net.Clustering.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -105,8 +109,8 @@
       <HintPath>..\packages\Unity.4.0.1\lib\net45\Microsoft.Practices.Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
@@ -168,11 +172,24 @@
     <Content Include="Content\map.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\clusters\clusterinvisible.png" />
+    <Content Include="Images\Image9.gif" />
+    <Content Include="Images\Image10.gif" />
+    <Content Include="Images\Image5.gif" />
     <Content Include="Images\Image1.gif" />
+    <Content Include="Images\Image6.gif" />
     <Content Include="Images\Image2.gif" />
+    <Content Include="Images\Image7.gif" />
     <Content Include="Images\Image3.gif" />
+    <Content Include="Images\Image8.gif" />
     <Content Include="Images\Image4.gif" />
     <Content Include="Images\loading.gif" />
+    <Content Include="Images\clusters\m1.png" />
+    <Content Include="Images\clusters\m2.png" />
+    <Content Include="Images\clusters\m3.png" />
+    <Content Include="Images\clusters\m4.png" />
+    <Content Include="Images\clusters\m5.png" />
+    <Content Include="Images\markers\pinerror.png" />
     <Content Include="Images\pin-blue.png" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
@@ -182,9 +199,12 @@
     <Content Include="scripts\jquery-2.2.1.js" />
     <Content Include="scripts\jquery-2.2.1.min.js" />
     <Content Include="scripts\Map.js" />
+    <Content Include="scripts\mapCluster.js" />
     <Content Include="scripts\markerclusterer.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -195,9 +215,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Map\IClusteredMarkerHelper.cs" />
     <Compile Include="Helpers\Map\IMapHelper.cs" />
+    <Compile Include="Helpers\Map\Implementation\ClusteredMarkerHelper.cs" />
     <Compile Include="Helpers\Map\Implementation\MapHelper.cs" />
     <Compile Include="Models\Map\Marker.cs" />
+    <Compile Include="Models\Map\MarkerInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

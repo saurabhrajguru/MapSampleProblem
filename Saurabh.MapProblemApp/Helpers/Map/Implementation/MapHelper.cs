@@ -15,7 +15,7 @@ namespace Saurabh.MapProblemApp.Helpers.Map.Implementation
     {
         IList<Marker> IMapHelper.GetAllRegions()
         {
-            var csvFilePath = HostingEnvironment.MapPath(@"~/App_Data/10000Markers.csv");
+            var csvFilePath = HostingEnvironment.MapPath(@"~/App_Data/Markers.csv");
             using (var textReader = new StreamReader(csvFilePath))
             {
                 var csv = new CsvReader(textReader);

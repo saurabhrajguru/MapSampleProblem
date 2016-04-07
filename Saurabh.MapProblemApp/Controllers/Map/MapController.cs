@@ -1,4 +1,5 @@
-﻿using Saurabh.MapProblemApp.Helpers.Map;
+﻿using GoogleMaps.Net.Clustering.Data.Params;
+using Saurabh.MapProblemApp.Helpers.Map;
 using System.Web.Mvc;
 
 namespace Saurabh.MapProblemApp.Controllers.Map
@@ -11,6 +12,7 @@ namespace Saurabh.MapProblemApp.Controllers.Map
     {
         #region Attributes
         private IMapHelper mapHelper = null;
+        private IClusteredMarkerHelper markerHelper = null;
         #endregion
 
         #region .ctor
@@ -19,9 +21,10 @@ namespace Saurabh.MapProblemApp.Controllers.Map
         /// Initializes a new instance of the <see cref="MapController"/> class.
         /// </summary>
         /// <param name="mapHelper">The map helper.</param>
-        public MapController(IMapHelper mapHelper)
+        public MapController(IMapHelper mapHelper,IClusteredMarkerHelper markerHelper)
         {
             this.mapHelper = mapHelper;
+            this.markerHelper = markerHelper;
         }
 
         #endregion
@@ -45,6 +48,16 @@ namespace Saurabh.MapProblemApp.Controllers.Map
         public JsonResult Markers()
         {
             return Json(this.mapHelper.GetAllRegions());
+        }
+
+        public JsonResult GetMarkers(GetMarkersParams markerparams)
+        {
+            return Json(this.markerHelper.GetClusters(markerparams), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetMarkerInfo(int? id)
+        {
+            return Json(this.markerHelper.GetMarkerInfo(id.Value), JsonRequestBehavior.AllowGet);
         }
 
         #endregion
