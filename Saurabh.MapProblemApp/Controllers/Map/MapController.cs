@@ -40,16 +40,6 @@ namespace Saurabh.MapProblemApp.Controllers.Map
             return View();
         }
 
-        /// <summary>
-        /// Returns markers
-        /// </summary>
-        /// <returns>JsonResult.</returns>
-        [HttpPost]
-        public JsonResult Markers()
-        {
-            return Json(this.mapHelper.GetAllRegions());
-        }
-
         public JsonResult GetMarkers(GetMarkersParams markerparams)
         {
             return Json(this.markerHelper.GetClusters(markerparams), JsonRequestBehavior.AllowGet);
