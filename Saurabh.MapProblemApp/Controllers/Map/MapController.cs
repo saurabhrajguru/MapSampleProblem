@@ -11,7 +11,6 @@ namespace Saurabh.MapProblemApp.Controllers.Map
     public class MapController : Controller
     {
         #region Attributes
-        private IMapHelper mapHelper = null;
         private IClusteredMarkerHelper markerHelper = null;
         #endregion
 
@@ -21,9 +20,8 @@ namespace Saurabh.MapProblemApp.Controllers.Map
         /// Initializes a new instance of the <see cref="MapController"/> class.
         /// </summary>
         /// <param name="mapHelper">The map helper.</param>
-        public MapController(IMapHelper mapHelper,IClusteredMarkerHelper markerHelper)
+        public MapController(IClusteredMarkerHelper markerHelper)
         {
-            this.mapHelper = mapHelper;
             this.markerHelper = markerHelper;
         }
 
